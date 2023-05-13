@@ -77,15 +77,22 @@ test('cannot require exec-child.js', t => {
 // sync
 //
 
-test('check if stdout goes to output', t => {
-  const result = shell.exec(`${JSON.stringify(shell.config.execPath)} -e "console.log(1234);"`);
+test('check if stdout goes to output', async t => {
+  const result = await new Promise(resolve => {
+    shell.exec(`${JSON.stringify(shell.config.execPath)} -e "console.log(1234);"`, {async: true}, (code, stdout, stderr) => {
+      resolve({code, stdout, stderr});
+    })
+  });
   t.falsy(shell.error());
   t.is(result.code, 0);
   t.is(result.stdout, '1234\n');
 });
-
-test('check if stderr goes to output', t => {
-  const result = shell.exec(`${JSON.stringify(shell.config.execPath)} -e "console.error(1234);"`);
+test('check if stderr goes to output', async t => {
+  const result = await new Promise(resolve => {
+    shell.exec(`${JSON.stringify(shell.config.execPath)} -e "console.error(1234);"`, {async: true}, (code, stdout, stderr) => {
+      resolve({code, stdout, stderr});
+    })
+  });
   t.falsy(shell.error());
   t.is(result.code, 0);
   t.is(result.stdout, '');
