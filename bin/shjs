@@ -7,6 +7,48 @@ if (require.main !== module) {
 // we must import global ShellJS methods after the require.main check to prevent the global
 // namespace from being polluted if the error is caught
 require('../global');
+require('../src/config');
+require('../src/common');
+require('../src/string');
+require('../src/path');
+require('../src/fs');
+require('../src/exec');
+require('../src/glob');
+require('../src/cat');
+require('../src/to');
+require('../src/error');
+require('../src/help');
+require('../src/env');
+require('../src/tempdir');
+require('../src/which');
+require('../src/sed');
+require('../src/ls');
+require('../src/mkdir');
+require('../src/rm');
+require('../src/chmod');
+require('../src/head');
+require('../src/tail');
+require('../src/toEnd');
+require('../src/toStart');
+require('../src/test');
+require('../src/toJson');
+require('../src/toYaml');
+require('../src/toIni');
+require('../src/toProperties');
+require('../src/toSource');
+require('../src/toISOString');
+require('../src/toDate');
+require('../src/toLocaleString');
+require('../src/toLocaleDateString');
+require('../src/toLocaleTimeString');
+require('../src/toTimeString');
+require('../src/toUTCString');
+require('../src/toGMTString');
+require('../src/toGMTOffset');
+require('../src/toRelativeTime');
+require('../src/toAbsoluteTime');
+require('../src/uniq');
+require('../src/realpath');
 
 function exitWithErrorMessage(msg) {
   console.log(msg);

@@ -1,4 +1,7 @@
 require('./global');
+require('./src/first');
+require('./src/second');
+require('./src/third');
 
 global.config.fatal = true;
 global.target = {};
