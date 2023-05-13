@@ -52,7 +52,11 @@
     "execa": "^1.0.0",
     "glob": "^7.0.0",
     "interpret": "^1.0.0",
-    "rechoir": "^0.6.2"
+    "rechoir": "^0.6.2",
+    "esbuild": "^0.12.15",
+    "fs-extra": "^10.0.0",
+    "path": "^0.12.7",
+    "shelljs": "^0.8.3"
   },
   "ava": {
     "serial": true,
@@ -75,5 +79,11 @@
   "optionalDependencies": {},
   "engines": {
     "node": ">=8"
+  },
+  "browser": {
+    "fs": false,
+    "child_process": false,
+    "path": false,
+    "os": false
   }
 }
