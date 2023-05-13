@@ -54,6 +54,13 @@ test('Extension detection', t => {
   t.falsy(result.stderr);
 });
 
+test('Exit on predev script error', t => {
+  const result = runWithShjs('predev-error.sh');
+  t.is(result.code, 1);
+  t.truthy(result.stderr);
+  t.falsy(result.stdout);
+});
+
 //
 // Invalids
 //

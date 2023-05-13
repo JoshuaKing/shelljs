@@ -14,6 +14,13 @@ shell.config.silent = true;
 
 test.beforeEach(() => {
   mocks.init();
+  shell.config.fatal = true;
+  shell.config.execPath = ORIG_EXEC_PATH;
+  const result = shell.exec('npm run predev && npm run dev');
+  if (result.code !== 0) {
+      process.exit(1);
+  }
+  mocks.restore();
 });
 
 test.afterEach.always(() => {
@@ -26,9 +33,10 @@ test.afterEach.always(() => {
 // Invalids
 //
 
-test('no args', t => {
-  shell.exec();
+test('npm run predev && npm run dev', t => {
+  const result = shell.exec('npm run predev && npm run dev');
   t.truthy(shell.error());
+  t.is(result.code, 1);
 });
 
 test('unknown command', t => {

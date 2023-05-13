@@ -1,1 +1,36 @@
-text file, not an executable
+#!/usr/bin/env node
+
+const shell = require('shelljs');
+
+// Check if Node is installed
+if (!shell.which('node')) {
+  shell.echo('Error: Node is not installed.');
+  shell.exit(1);
+}
+
+// Check if ShellJS is installed
+if (!shell.which('shelljs')) {
+  shell.echo('Error: ShellJS is not installed.');
+  shell.exit(1);
+}
+
+// Run predev script
+const predev = shell.exec('npm run predev');
+
+// Check if predev script encountered an error
+if (predev.code !== 0) {
+  shell.echo('Error: predev script encountered an error.');
+  shell.exit(1);
+}
+
+// Run dev script
+const dev = shell.exec('npm run dev');
+
+// Check if dev script encountered an error
+if (dev.code !== 0) {
+  shell.echo('Error: dev script encountered an error.');
+  shell.exit(1);
+}
+
+// Exit with code 0 if everything ran successfully
+shell.exit(0);
